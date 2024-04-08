@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_types_as_parameter_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,9 +10,9 @@ import 'progress_bar.dart';
 import 'question_card.dart';
 
 class Body extends StatelessWidget {
+
   // ignore: use_super_parameters
   const Body({
-    // ignore: avoid_types_as_parameter_names, non_constant_identifier_names
     Key ,key,
   }) : super(key: key);
 
@@ -22,7 +22,12 @@ class Body extends StatelessWidget {
     QuestionController questionController = Get.put(QuestionController());
     return Stack(
       children: [
-        SvgPicture.asset("assets/icons/bg.svg", fit: BoxFit.fill),
+        Positioned.fill(
+          child: SvgPicture.asset(
+            "assets/icons/bg.svg",
+            fit: BoxFit.fill,
+          ),
+        ),
         SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +39,7 @@ class Body extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: ProgressBar(),
               ),
-              SizedBox(height: kDefaultPadding),
+              SizedBox(height: kDefaultPadding-13),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -61,7 +66,7 @@ class Body extends StatelessWidget {
                 ),
               ),
               Divider(thickness: 1.5),
-              SizedBox(height: kDefaultPadding),
+              SizedBox(height: kDefaultPadding - 13),
               Expanded(
                 child: PageView.builder(
                   // Block swipe to next qn
